@@ -168,30 +168,33 @@ function difficulty(numCharacters, lvlCharacters, arrayOfMonsters) {
         6: 4
     }
     numOfMonsters = arrayOfMonsters.length
+    console.log(`number of monsters ${numOfMonsters}`)
     if (numOfMonsters == 1) {
         modifier = 1
     } else if (numOfMonsters == 2) {
         modifier = 2
-    } else if (2 < numOfMonsters < 7) {
+    } else if (3 <= numOfMonsters <= 6) {
         modifier = 3
-    } else if (6 < numOfMonsters < 11) {
+    } else if (7 <= numOfMonsters <= 10) {
         modifier = 4
-    } else if (10 < numOfMonsters < 15) {
+    } else if (11 <= numOfMonsters <= 14) {
         modifier = 5
     } else {
         modifier = 6
     }
 
     if (numCharacters < 3) {
-        modifier -= 1
-    }
-    if (numCharacters > 5) {
         modifier += 1
     }
+    if (numCharacters > 5) {
+        modifier -= 1
+    }
+    console.log(`modifier = ${modifiers[modifier]}`)
+    console.log(`total xp = ${totalXp}`)
     adjustedXp = modifiers[modifier] * totalXp
     adjustedXpPerChar = adjustedXp / numCharacters
     console.log(difficultyChart[lvlCharacters])
     console.log(`difficulty rating per character = ${adjustedXpPerChar}`)
 }
 
-difficulty(5, 4, [Tiger, Tiger, Worg, Lion])
+difficulty(8, 2, [Wolf, Wolf, Wolf, Wolf, Wolf, Dire_Wolf, Dire_Wolf, Dire_Wolf])
